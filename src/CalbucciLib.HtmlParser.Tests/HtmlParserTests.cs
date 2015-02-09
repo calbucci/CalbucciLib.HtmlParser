@@ -14,92 +14,7 @@ namespace CalbucciLib.HtmlPaser.Tests
 	public class HtmlParserTests
 	{
 
-		public void FromCSVToCode()
-		{
-			string[] lines = File.ReadAllLines(@"c:\temp\attrinfo2.csv");
 
-			StreamWriter sw = new StreamWriter(@"D:\Code\CalbucciLib.HtmlParser\src\CalbucciLib.HtmlParser\HtmlElementInfo_Initializer.cs");
-			sw.WriteLine(@"using System;
-using System.Linq;
-using System.Collections.Generic;
-
-namespace CalbucciLib
-{
-
-	public partial class HtmlElementInfo2
-	{
-
-		private static void Initialize()
-		{
-			AllElements = new List<HtmlElementInfo2>
-			{
-");
-			for (int i = 1; i < lines.Length; i++)
-			{
-				string[] parts = lines[i].Split(new[] {','});
-
-				var tagName = parts[0];
-				var version = parts[1];
-				var deprecated = parts[2];
-				var type = parts[3];
-				var permittedChildrenTypes = parts[4];
-				var permittedChildrenTagsString = parts[5];
-				var attributesString = parts[6];
-				var tagFormatting = parts[7];
-				var parentTagsString = parts[8];
-				var excludeParentTagsString = parts[9];
-				var parentContentTypes = parts[10];
-				var obsoleteAttributesString = parts[11];
-
-				if (string.IsNullOrWhiteSpace(permittedChildrenTypes))
-					permittedChildrenTypes = "HEElementType.None";
-				else
-				{
-					permittedChildrenTypes = string.Join(" | ",
-						permittedChildrenTypes.Split(new[] {'|'})
-							.Select(v => "HEElementType." + v));
-				}
-
-				if (string.IsNullOrWhiteSpace(parentContentTypes))
-					parentContentTypes = "HEElementType.None";
-				else
-				{
-					parentContentTypes = string.Join(" | ",
-						parentContentTypes.Split(new[] { '|' })
-							.Select(v => "HEElementType." + v));
-				}
-
-				if (string.IsNullOrWhiteSpace(tagFormatting))
-					tagFormatting = "Complete";
-
-
-				sw.WriteLine("new HtmlElementInfo2 {");
-				
-				sw.WriteLine("\tTagName = \"{0}\",", tagName);
-				sw.WriteLine("\tHtmlVersion = {0},", version);
-				sw.WriteLine("\tDeprecated = {0},", deprecated.ToLower());
-				sw.WriteLine("\tElementType = HEElementType.{0},", type);
-				sw.WriteLine("\tPermittedChildrenTypes = {0},", permittedChildrenTypes);
-				sw.WriteLine("\tPermittedChildrenTagsString = \"{0}\",", permittedChildrenTagsString);
-				sw.WriteLine("\tAttributesString = \"{0}\",", attributesString);
-				sw.WriteLine("\tTagFormatting = HETagFormatting.{0},", tagFormatting);
-				sw.WriteLine("\tParentTagsString = \"{0}\",", parentTagsString);
-				sw.WriteLine("\tExcludeParentTagsString = \"{0}\",", excludeParentTagsString);
-				sw.WriteLine("\tParentContentTypes = {0},", parentContentTypes);
-				sw.WriteLine("\tObsoleteAttributesString = \"{0}\"", obsoleteAttributesString);
-
-				sw.WriteLine("},");
-				sw.WriteLine();
-			}
-			sw.WriteLine(@"
-			};
-		}
-	}
-}");
-			sw.Close();
-			
-			
-		}
 
 		[TestMethod]
 		public void SimpleSegments()
@@ -387,6 +302,7 @@ namespace CalbucciLib
 		private string ParseAndSerialize(string html)
 		{
 			var parser = new HtmlParser(html);
+			parser.PreserveCRLFTab = false;
 			StringBuilder sb = new StringBuilder(html.Length);
 			parser.Parse(
 				(text, parent) =>
