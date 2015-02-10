@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>CalbucciLib.HtmlParser</id>
+        <version>0.1.1</version>
+        <title>HTML Parser (Event-based)</title>
+        <authors>Marcelo Calbucci</authors>
+        <projectUrl>http://github.com/calbucci/CalbucciLib.HtmlParser</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>A fast HTML Parser using an event-based system (similar to XML-SAX parsers).</description>
+    </metadata>
+    <files>
+        <file src="..\src\CalbucciLib.HtmlParser\bin\Release\CalbucciLib.HtmlParser.dll" target="lib\net45\CalbucciLib.HtmlParser.dll" />
+    </files>
+</package>
