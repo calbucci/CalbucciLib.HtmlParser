@@ -7,7 +7,7 @@
     <ProjectGuid>{3CEA0AE8-E0CD-4783-AACC-FE823F0261C9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CalbucciLib.HtmlParser</RootNamespace>
+    <RootNamespace>CalbucciLib</RootNamespace>
     <AssemblyName>CalbucciLib.HtmlParser</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
