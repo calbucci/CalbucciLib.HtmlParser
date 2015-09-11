@@ -437,6 +437,7 @@ namespace CalbucciLib
 					{
 						AddWarning("Duplicate id: " + he.Id + " - Element: " + he.OriginalOpenTag);
 					}
+					_Ids[he.Id] = he.Id;
 
 					if (he.SyntaxError)
 					{
