@@ -1,6 +1,6 @@
 # CalbucciLib.HtmlParser
 
-CalbucciLib.HtmlParser is a SAX-like HTML Parser for fast parsing of HTML documents without building the DOM.
+CalbucciLib.HtmlParser is a SAX-like HTML 5.0 compliant Parser for fast parsing of HTML documents without building the DOM.
 
 
 ## Typical Scenarios
