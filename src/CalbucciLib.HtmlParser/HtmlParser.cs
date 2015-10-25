@@ -433,13 +433,16 @@ namespace CalbucciLib
 					if (!he.HasOnlyKnownAttributes)
 						HasOnlyValidAttributes = false;
 
-					if (!string.IsNullOrWhiteSpace(he.Id) && _Ids.ContainsKey(he.Id))
-					{
-						AddWarning("Duplicate id: " + he.Id + " - Element: " + he.OriginalOpenTag);
-					}
-					_Ids[he.Id] = he.Id;
+				    if (!string.IsNullOrWhiteSpace(he.Id))
+				    {
+				        if (_Ids.ContainsKey(he.Id))
+				        {
+				            AddWarning("Duplicate id: " + he.Id + " - Element: " + he.OriginalOpenTag);
+				        }
+				        _Ids[he.Id] = he.Id;
+				    }
 
-					if (he.SyntaxError)
+				    if (he.SyntaxError)
 					{
 						HasValidSyntax = false;
 						if (he.FatalSyntaxError)
