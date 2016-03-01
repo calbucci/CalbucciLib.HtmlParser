@@ -481,7 +481,7 @@ namespace CalbucciLib
 		//  STATIC METHODS (public)
 		//
 		// ====================================================================
-		static public string ParseClosingTag(string elem)
+		public static string ParseClosingTag(string elem)
 		{
 			if(!elem.StartsWith("</"))
 				return null;
@@ -497,12 +497,12 @@ namespace CalbucciLib
 			return elem.Substring(2).Trim().ToLowerInvariant();
 		}
 
-		static public string BuildOpenTag(HtmlElementInfo ei, List<Tuple<string, string>> attributes, bool noEvents, bool noUnknownAttributes)
+		public static string BuildOpenTag(HtmlElementInfo ei, List<Tuple<string, string>> attributes, bool noEvents, bool noUnknownAttributes)
 		{
 			return InternalBuildOpenTag(ei, ei.TagName, attributes, noEvents, noUnknownAttributes, false);
 		}
 
-		static public string BuildOpenTag(string tagName, List<Tuple<string, string>> attributes, bool noEvents, bool noUnknownAttributes)
+		public static string BuildOpenTag(string tagName, List<Tuple<string, string>> attributes, bool noEvents, bool noUnknownAttributes)
 		{
 			HtmlElementInfo ei = null;
 			if(noUnknownAttributes)
@@ -511,7 +511,7 @@ namespace CalbucciLib
 		}
 
 
-		static public string HtmlAttributeEncode(string attributeValue)
+		public static string HtmlAttributeEncode(string attributeValue)
 		{
 			if(attributeValue == null)
 				return null;
@@ -541,7 +541,7 @@ namespace CalbucciLib
 		/// Determines if an attribute must have a quote (and what type) according to HTML 4.01 spec (http://www.w3.org/TR/html401/)
 		/// section 3.2.2.
 		/// </summary>
-		static public QuoteType NeedQuotesForAttr(string val)
+		public static QuoteType NeedQuotesForAttr(string val)
 		{
 			if(string.IsNullOrWhiteSpace(val))
 				return QuoteType.Double;
@@ -564,7 +564,7 @@ namespace CalbucciLib
 			return qt;
 		}
 
-		static public string CleanStyleAttr(string style)
+		public static string CleanStyleAttr(string style)
 		{
 			if(string.IsNullOrWhiteSpace(style))
 				return style;
@@ -603,7 +603,7 @@ namespace CalbucciLib
 		//  STATIC METHODS (private/protected)
 		//
 		// ====================================================================
-		static private string InternalBuildOpenTag(HtmlElementInfo ei, string tagName, List<Tuple<string, string>> attributes, 
+		private static string InternalBuildOpenTag(HtmlElementInfo ei, string tagName, List<Tuple<string, string>> attributes, 
 			bool noEvents, bool noUnknownAttributes, bool xmlEmptyTag)
 		{
 			if(!noUnknownAttributes)

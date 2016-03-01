@@ -23,7 +23,7 @@ namespace CalbucciLib
 		//  STATIC FIELDS
 		//
 		// ====================================================================
-		static private readonly int _MaxInnerTextLengthStored = 65500;
+		private static readonly int _MaxInnerTextLengthStored = 65500;
 		static HashSet<string> _IgnoreTextInsideTag;
 		static char[] _NonSignificantWhitespace;
 

@@ -20,7 +20,7 @@ namespace CalbucciLib
 		public static List<string> GlobaAttributes;
 
 		private static List<HtmlElementInfo> AllElements;
-		static private Dictionary<string, HtmlElementInfo> ElemsInfo;
+		private static Dictionary<string, HtmlElementInfo> ElemsInfo;
 
 
 		// ====================================================================
@@ -142,7 +142,7 @@ namespace CalbucciLib
 		/// <summary>
 		/// Returns the HtmlElementInfo for the tag.
 		/// </summary>
-		static public HtmlElementInfo GetElementInfo(string tagName)
+		public static HtmlElementInfo GetElementInfo(string tagName)
 		{
 			if (string.IsNullOrWhiteSpace(tagName))
 				return null;
@@ -152,7 +152,7 @@ namespace CalbucciLib
 		}
 
 
-		static private IList<string> ConvertSemicolonDelimited(string text)
+		private static IList<string> ConvertSemicolonDelimited(string text)
 		{
 			List<string> strList;
 			if (text != null)
